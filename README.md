@@ -1,3 +1,5 @@
+https://github.com/goitacademy/react-homework/tree/master/homework-02/phonebook
+
 **Читать на других языках: [Русский](README.md), [Українська](README.ua.md).**
 
 # Виджет отзывов
