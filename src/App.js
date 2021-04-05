@@ -4,6 +4,8 @@ import ContactForm from './components/ContactForm';
 import ContactList from './components/ContactList';
 import Filter from './components/Filter';
 
+import './styles.css';
+
 class App extends Component {
   state = {
     contacts: [
@@ -53,15 +55,15 @@ class App extends Component {
     const { filter, contacts } = this.state;
     const visibleContacts = this.getVisibleContacts();
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <div className="container">
+        <h1 className="title">Phonebook</h1>
         <ContactForm onFormSubmit={this.addContact} existContacts={contacts} />
         {/* filter */}
         <Filter value={filter} onFilterValue={this.changeFilter} />
 
         {contacts.length > 0 && (
           <div>
-            <h2>Contacts</h2>
+            <h2 className="subtitle">Contacts</h2>
             <ContactList
               contactsForList={visibleContacts}
               onDeleteContact={this.deleteContact}

@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import styles from '../ContactForm/ContactForm.module.css';
 
 class ContactForm extends Component {
   nameInputId = uuidv4();
@@ -44,31 +45,39 @@ class ContactForm extends Component {
   render() {
     const { name, number } = this.state;
     return (
-      <form onSubmit={this.handleFormSubmit}>
-        <label htmlFor={this.nameInputId} />
-        <input
-          id={this.nameInputId}
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-          value={name}
-          required
-          onChange={this.changeInput}
-        />
+      <form onSubmit={this.handleFormSubmit} className={styles.contactForm}>
+        <label htmlFor={this.nameInputId} className={styles.contactForm__label}>
+          <span className={styles.contactForm__title}>Name:</span>
+          <input
+            id={this.nameInputId}
+            type="text"
+            name="name"
+            className={styles.contactForm__input}
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+            value={name}
+            required
+            onChange={this.changeInput}
+          />
+        </label>
 
-        <label htmlFor={this.telInputId} />
-        <input
-          id={this.telInputId}
-          type="tel"
-          name="number"
-          pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})"
-          title="Номер телефона должен состоять из 11-12 цифр и может содержать цифры, пробелы, тире, пузатые скобки и может начинаться с +"
-          value={number}
-          required
-          onChange={this.changeInput}
-        />
-        <button type="submit">Add contact</button>
+        <label htmlFor={this.telInputId} className={styles.contactForm__label}>
+          <span className={styles.contactForm__title}> Phone:</span>
+          <input
+            id={this.telInputId}
+            type="tel"
+            name="number"
+            className={styles.contactForm__input}
+            pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})"
+            title="Номер телефона должен состоять из 11-12 цифр и может содержать цифры, пробелы, тире, пузатые скобки и может начинаться с +"
+            value={number}
+            required
+            onChange={this.changeInput}
+          />
+        </label>
+        <button type="submit" className={styles.contactForm__button}>
+          Add contact
+        </button>
       </form>
     );
   }
